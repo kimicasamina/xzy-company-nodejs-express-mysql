@@ -8,9 +8,9 @@ const staticFolder = path.join(__dirname, "public");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(staticFolder));
+app.use(express.static(path.join(__dirname, "public")));
 
-// routes
+// routes ----------------
 app.get("/", function (req, res) {
   res.sendFile(path.join(staticFolder, "index.html"));
 });

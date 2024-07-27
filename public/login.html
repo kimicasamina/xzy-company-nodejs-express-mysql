@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dummy Website</title>
-    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <section class="container">
         <h1 class="">LOGIN PAGE</h1>
-        <form action="" class="form">
+        <form action="/auth" method="post" class="form">
             <div class="form-controller">
                 <label for="" class="">Username</label>
-                <input type="text" class="form-field" placeholder="Enter username">
+                <input type="text" class="form-input" placeholder="Enter username">
             </div>
+            <div class="form-controller">
+                <label for="" class="">Password</label>
+                <input type="text" class="form-input" placeholder="Enter username">
+            </div>
+            <button type="submit" class="btn-accent">Submit</button>
         </form>
     </section>
     <script src="js/script.js"></script>
