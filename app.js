@@ -10,12 +10,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// routes ----------------
+// mysql connection
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "users",
+// });
+
+// routes
 app.get("/", function (req, res) {
   res.sendFile(path.join(staticFolder, "index.html"));
 });
+
 app.get("/login", function (req, res) {
   res.sendFile(path.join(staticFolder, "login.html"));
+});
+
+app.get("/dashboard", function (req, res) {
+  res.sendFile(path.join(staticFolder, "dashboard.html"));
+});
+
+app.post("/auth", function (req, res) {
+  const { username, password } = req.body;
+  console.log("req:", req.body);
 });
 
 app.get("*", function (req, res) {
