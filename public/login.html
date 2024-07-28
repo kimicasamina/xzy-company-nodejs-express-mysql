@@ -37,15 +37,15 @@
     <!----------- LOGIN --------------->
     <section class="login">
         <div class="login-container">
-            <form action="/auth" method="post" class="form" id="form">
+            <form action="/auth" method="POST" class="form" id="form">
                 <div class="form-controller">
                     <label for="" class="">USERNAME</label>
-                    <input type="text" class="form-input" id="username" placeholder="Enter username">
+                    <input type="text" class="form-input" id="username" placeholder="Enter username" name="username">
                     <small id="username-error-msg" class="error-msg"></small>
                 </div>
                 <div class="form-controller">
                     <label for="" class="">PASSWORD</label>
-                    <input type="text" class="form-input" id="password" placeholder="Enter username">
+                    <input type="text" class="form-input" id="password" placeholder="Enter username" name="password">
                     <small id="password-error-msg" class="error-msg "></small>
                 </div>
                 <div class="layout-row-between-center">
@@ -76,6 +76,6 @@
         
 
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" type="module"></script>
 </body>
 </html>

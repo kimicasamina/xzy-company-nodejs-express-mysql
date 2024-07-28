@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../fonts/HelveticaNeueBlack.otf");
+  src: url("../fonts/HelveticaNeueBold.otf");
+  src: url("../fonts/HelveticaNeueHeavy.otf");
+  src: url("../fonts/HelveticaNeueLight.otf");
+  src: url("../fonts/HelveticaNeueMedium.otf");
+  src: url("../fonts/HelveticaNeueRoman.otf");
+  src: url("../fonts/HelveticaNeueThin.otf");
+  src: url("../fonts/HelveticaNeueUltraLight.otf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -23,8 +35,9 @@
 
 body {
   background-color: var(--white);
-  font-family: sans-serif;
+  font-family: "Helvetica Neue";
   font-size: 16px;
+  font-weight: 600;
   line-height: 1.5;
 
   width: 100%;
@@ -35,7 +48,7 @@ body {
   margin-top: 100px;
 }
 
-/* ---------- TYPOGRAPHY & GLOBALS ------------ */
+/* ---------- GLOBALS ------------ */
 
 p {
   color: var(--black);
@@ -334,6 +347,7 @@ a:hover {
 
 @media screen and (max-width: 540px) {
 }
+
 /* ---------- NEWS COMPONENT ------------ */
 .news {
   min-height: 100%;
@@ -361,6 +375,12 @@ a:hover {
   align-items: center;
   row-gap: 14px;
   column-gap: 0;
+  padding: 10px 0;
+  border-bottom: solid 1px var(--gray-300);
+}
+
+.news .article:nth-last-of-type() {
+  border-bottom: solid 1px red;
 }
 
 .news .article .article-info {
@@ -379,10 +399,19 @@ a:hover {
   margin-right: 20px;
 }
 
+.news .article-label:nth-child(odd) {
+  background-color: var(--pink);
+}
+
 .news .article-info .article-date {
   display: inline-block;
 }
+
+.news .article-body {
+}
+
 /* ---------- CONTACTS COMPONENT ------------ */
+
 /* ---------- FOOTER COMPONENT ------------ */
 .footer-content.container {
   padding-bottom: 0;
@@ -406,8 +435,6 @@ a:hover {
 
 /* ---------- LOGIN PAGE ------------ */
 .login {
-  /* height: 100%; */
-  /* background-color: #008000; */
 }
 
 .login-container {
