@@ -31,6 +31,22 @@ app.get("/dashboard", function (req, res) {
   res.sendFile(path.join(staticFolder, "dashboard.html"));
 });
 
+app.get("/services", function (req, res) {
+  res.sendFile(path.join(staticFolder, "services.html"));
+});
+
+app.get("/about", function (req, res) {
+  res.sendFile(path.join(staticFolder, "about_us.html"));
+});
+
+app.get("/news", function (req, res) {
+  res.sendFile(path.join(staticFolder, "news.html"));
+});
+
+app.get("/contact", function (req, res) {
+  res.sendFile(path.join(staticFolder, "contact.html"));
+});
+
 app.post("/auth", function (req, res) {
   const { username, password } = req.body;
   console.log("req:", req.body);

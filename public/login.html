@@ -7,45 +7,75 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <header class="header">
+       <!----------- HEADER --------------->
+       <header class="header">
         <div class="navbar container">
             <div class="branding">
                 <span class="logo">Dummy</span>
             </div>
             <nav class="nav">
                 <ul class="navlinks">
-                    <li><a href="/">Service</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/news">News</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <!-- <li><a href="/login">LOGIN</a></li> -->
-                    
-                    <a href="/login" class="">
-                        <button type="button" class="btn-accent">
-                            Login
-                        </button>
-                    </a>
+                    <li><a href="/login" class="btn btn-white">Sign in</a></li>
                 </ul>
                 <span class="burger-menu">MENU</span>
             </nav>
         </div>
     </header>
-    <section class="login container">
-        <h1 class="">LOGIN PAGE</h1>
-        <form action="/auth" method="post" class="form" id="form">
-            <div class="form-controller">
-                <label for="" class="">Username</label>
-                <input type="text" class="form-input" id="username" placeholder="Enter username">
-                <small id="username-error-msg" class="error-msg"></small>
-            </div>
-            <div class="form-controller">
-                <label for="" class="">Password</label>
-                <input type="text" class="form-input" id="password" placeholder="Enter username">
-                <small id="password-error-msg" class="error-msg "></small>
-            </div>
-            <button type="submit" class="btn-accent">Submit</button>
-        </form>
+
+    <!----------- HERO --------------->
+    <section class="hero">
+        <div class="hero-container">
+            <p class="hero-title">Sign In</p>
+        </div>
     </section>
+
+    <!----------- LOGIN --------------->
+    <section class="login">
+        <div class="login-container">
+            <form action="/auth" method="post" class="form" id="form">
+                <div class="form-controller">
+                    <label for="" class="">USERNAME</label>
+                    <input type="text" class="form-input" id="username" placeholder="Enter username">
+                    <small id="username-error-msg" class="error-msg"></small>
+                </div>
+                <div class="form-controller">
+                    <label for="" class="">PASSWORD</label>
+                    <input type="text" class="form-input" id="password" placeholder="Enter username">
+                    <small id="password-error-msg" class="error-msg "></small>
+                </div>
+                <div class="layout-row-between-center">
+                    <button type="submit" class="btn btn-pink">Submit</button>
+                    <a class="forgot-password">Forgot Password?</a>
+                </div>
+            </form>
+            <div class="privacy-policy layout-row-end-center">
+                <a class="policy-link">
+                    Privacy
+                </a>
+                <a class="policy-link">
+                    Terms
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!----------- FOOTER --------------->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="branding">
+                <span class="logo">Dummy</span>
+            </div>
+            <small class="">(C) Dummy</small>
+        </div>
+        
+
+    </footer>
     <script src="js/script.js"></script>
 </body>
 </html>
