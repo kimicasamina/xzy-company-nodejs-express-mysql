@@ -1,16 +1,16 @@
 const express = require("express");
+const mysql = require("mysql2");
 const path = require("path");
 const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
+const { getUsers } = require("./database");
+getUsers;
 
 const app = express();
 dotenv.config();
 const staticFolder = path.join(__dirname, "public");
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // ------ routes -------
@@ -42,16 +42,28 @@ app.get("/dashboard", function (req, res) {
   res.sendFile(path.join(staticFolder, "dashboard.html"));
 });
 
-app.post("/auth", (req, res) => {
+app.post("/auth", async (req, res) => {
   const { username, password } = req.body;
 
   if (username && password) {
-    res.send({ message: "SUCCESS" });
+    console.log(username + " " + password);
+
+    const users = await getUsers();
+    res.json(users);
   }
+
+  // create db and tables
+  // const db = await createDb();
+  // console.log("DB: ", db);
 });
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(staticFolder, "not_found.html"));
+});
+
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.status(500).send("Something broke");
 });
 
 app.listen(process.env.PORT, () => {
