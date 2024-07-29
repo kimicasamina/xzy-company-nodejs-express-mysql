@@ -44,9 +44,8 @@ app.get("/dashboard", function (req, res) {
 
 app.post("/auth", (req, res) => {
   const { username, password } = req.body;
-  console.log("REQ:", username);
 
-  if (username) {
+  if (username && password) {
     res.send({ message: "SUCCESS" });
   }
 });
