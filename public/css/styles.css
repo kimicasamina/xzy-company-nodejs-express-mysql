@@ -29,7 +29,7 @@
   --gray-200: #cccccc;
   --gray-100: #dddddd;
   --info: #009fe8;
-  --alert: #e73e3e;
+  --alert: #790707;
   --success: #008000;
 }
 
@@ -621,4 +621,42 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+/* ---------- DASHBOARD TOAST MESSAGE ------------ */
+.toast {
+}
+
+.toast-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  gap: 15px;
+
+  background-color: var(--white);
+  padding: 35px;
+  box-shadow: 0 4px 3px 0px var(--gray-200);
+  border: solid 1px var(--gray-100);
+  border-radius: 4px;
+}
+
+.toast-message {
+  width: 100%;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.toast-message.success {
+  color: var(--success);
+  background-color: rgba(3, 173, 94, 0.288);
+  outline: 1px solid rgba(3, 173, 94, 0.582);
+}
+
+.toast-message.error {
+  display: none;
+  color: var(--alert);
+  background-color: rgba(230, 107, 107, 0.329);
+  outline: 1px solid rgba(230, 107, 107, 0.623);
 }
