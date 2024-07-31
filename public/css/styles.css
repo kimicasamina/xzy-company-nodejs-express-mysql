@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Helvetica Neue";
   src: url("../fonts/HelveticaNeueBlack.otf");
   src: url("../fonts/HelveticaNeueBold.otf");
@@ -8,6 +8,23 @@
   src: url("../fonts/HelveticaNeueRoman.otf");
   src: url("../fonts/HelveticaNeueThin.otf");
   src: url("../fonts/HelveticaNeueUltraLight.otf");
+} */
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../assets/fonts/HelveticaNeueBold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../assets/fonts/HelveticaNeueMedium.otf");
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../assets/fonts/helvetica-neue-regular.ttf");
+  font-weight: regular;
 }
 
 * {
@@ -37,23 +54,23 @@ body {
   background-color: var(--white);
   font-family: "Helvetica Neue";
   font-size: 16px;
-  font-weight: 600;
+  font-weight: regular;
   line-height: 1.5;
 
   width: 100%;
-  min-height: calc(100vh - 100px);
-  margin-top: 100px;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-@media screen and (max-width: 912px) {
+/* @media screen and (max-width: 912px) {
   body {
     min-height: calc(100vh - 80px);
     margin-top: 80px;
   }
-}
+} */
 
 /* ---------- GLOBALS ------------ */
 
@@ -64,6 +81,12 @@ p {
 
 h1 {
   font-size: 46px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 li {
@@ -73,6 +96,7 @@ li {
 a {
   text-decoration: none;
   color: var(--black);
+  font-size: 16px;
 }
 
 a:hover {
@@ -84,7 +108,8 @@ a:hover {
   min-width: 120px;
   border-radius: 4px;
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
   border: none;
   box-shadow: 0 2px 2px 0 var(--gray-200);
@@ -147,7 +172,7 @@ a:hover {
 
 @media screen and (max-width: 640px) {
   .container {
-    padding: 30px 15px;
+    padding: 80px 15px;
   }
 }
 
@@ -158,7 +183,7 @@ a:hover {
   left: 0;
   right: 0;
   top: 0;
-  height: 100px;
+  height: 60px;
   z-index: 10;
 
   display: flex;
@@ -176,8 +201,8 @@ a:hover {
 }
 
 .branding .logo {
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .nav {
@@ -202,6 +227,11 @@ a:hover {
   display: none;
 }
 
+.menu-btn {
+  height: 32px;
+  width: 32px;
+}
+
 @media screen and (max-width: 912px) {
   .header {
     height: 80px;
@@ -221,7 +251,7 @@ a:hover {
   }
 
   .nav.visible {
-    background-color: rgba(0, 0, 0, 0.808);
+    background-color: #00000099;
     min-height: calc(100vh - 80px);
     position: absolute;
     top: 80px;
@@ -229,8 +259,6 @@ a:hover {
     right: 0;
     bottom: 0;
     z-index: 500;
-    /* opacity: 0.829; */
-
     display: flex;
     flex-direction: column;
   }
@@ -294,10 +322,9 @@ a:hover {
 /* ---------- HERO COMPONENT ------------ */
 .hero {
   width: 100%;
-  /* flex: 1; */
-  min-height: 320px;
+  min-height: 310px;
 
-  background-image: url("../images/mypage/header.jpg");
+  background-image: url("../assets/images/mypage/header.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -307,7 +334,7 @@ a:hover {
 
 .hero .hero-container {
   width: 100%;
-  height: 100%;
+  min-height: 200px;
   display: grid;
   place-items: center;
 }
@@ -330,10 +357,13 @@ a:hover {
 @media screen and (max-width: 640px) {
   .hero {
     width: 100%;
-    /* flex: 1; */
-    min-height: 180px;
+    min-height: 300px;
     background-position: center center;
     background-size: cover;
+  }
+
+  .hero .hero-container {
+    min-height: 140px;
   }
 
   .hero .hero-title {
@@ -364,20 +394,21 @@ a:hover {
 }
 
 .services .cards {
-  gap: 50px;
+  gap: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .services .card {
+  display: flex;
   width: 100%;
+  max-width: 244px;
   flex-direction: column;
-  gap: 25px;
+  gap: 12px;
   overflow: hidden;
 }
 
 .services .card img {
-  border-radius: 4px;
   object-fit: contain;
   width: 100%;
 }
@@ -385,26 +416,29 @@ a:hover {
 @media screen and (max-width: 912px) {
   .services .cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
+  }
+
+  .services .card {
+    max-width: 100%;
   }
 }
 
 @media screen and (max-width: 540px) {
   .services .cards {
+    gap: 55px;
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 /* ---------- ABOUT US COMPONENT ------------ */
 .about-us {
-  background-image: url("../images/aboutus/background.jpg");
+  background-image: url("../assets/images/aboutus/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 
-  min-height: 100%;
+  /* min-height: 100%; */
   flex: 1;
-  /* background-color: orange; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -425,6 +459,8 @@ a:hover {
 }
 
 .about-us-container {
+  width: 100%;
+  min-height: 100%;
 }
 
 .about-us-title {
@@ -495,8 +531,8 @@ a:hover {
   display: inline-block;
   background-color: var(--pink);
 
-  width: 100px;
-  padding: 4px 8px;
+  width: 120px;
+  padding: 5px;
   border-radius: 4px;
   color: var(--white);
   text-align: center;
@@ -514,20 +550,95 @@ a:hover {
 .news .article-body {
 }
 
+.cta-news {
+  width: 100%;
+  display: flex;
+  margin-top: 60px;
+}
+
+.cta-news .cta-news-list {
+  min-width: 240px;
+  margin: 0 auto;
+  height: 60px;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-color: var(--white);
+  border: solid 1px var(--black);
+}
+
+.cta-news .cta-news-list::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: var(--black);
+  position: absolute;
+
+  right: -8px;
+  top: 8px;
+}
+
+.cta-news .cta-news-list::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--black);
+  position: absolute;
+  bottom: -8px;
+  left: 8px;
+}
+
 @media screen and (max-width: 912px) {
   .news .article {
     padding: 25px 0;
   }
 }
 
-/* ---------- CONTACTS COMPONENT ------------ */ /* ---------- FOOTER COMPONENT ------------ */
+/* ---------- CONTACTS COMPONENT ------------ */
+
+.contact {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../assets/images/contact/background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.contact h1 {
+  text-align: center;
+  color: var(--white);
+}
+
+.contact .map-container {
+  background-color: var(--gray-100);
+  /* flex: 1; */
+  height: 600px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.contact .map-container h1 {
+  color: var(--black);
+  font-size: 60px;
+  font-weight: 800;
+}
+
+/* ---------- FOOTER COMPONENT ------------ */
 .footer-content.container {
   padding-bottom: 0;
   padding-top: 0;
 }
 .footer {
   width: 100%;
-  height: 100px;
+  height: 60px;
   background-color: var(--yellow);
   color: black;
 
@@ -539,6 +650,10 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer .copyrights {
+  font-size: 12px;
 }
 
 /* ---------- LOGIN PAGE ------------ */
