@@ -55,11 +55,6 @@ body {
   }
 }
 
-@media screen and (max-width: 540px) {
-  body {
-  }
-}
-
 /* ---------- GLOBALS ------------ */
 
 p {
@@ -512,11 +507,11 @@ a:hover {
   margin-right: 20px;
 }
 
-.news .article-label:nth-of-type(even) {
+.article-label:nth-of-child(even) {
   background-color: var(--blue);
 }
 
-.news .article-label:nth-of-type(odd) {
+.article-label:nth-of-child(odd) {
   background-color: var(--pink);
 }
 

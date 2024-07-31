@@ -2,10 +2,9 @@ const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
 const dotenv = require("dotenv");
-const session = require("express-session");
-const { getUsers } = require("./database");
-const { userInfo } = require("os");
-getUsers;
+const { getUser, verifyUser } = require("./database.js");
+getUser;
+verifyUser;
 
 const app = express();
 dotenv.config();
@@ -15,25 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 60 * 1000 * 30,
-    },
-  })
-);
-
 // ------ routes -------
 app.get("/", function (req, res) {
-  console.log("REQ: ", req);
-  const user = req.session.user;
-  if (user) {
-    console.log("IS AUTHENTICATED? ", user);
-    return res.redirect("/dashboard");
-  }
   res.sendFile(path.join(staticFolder, "index.html"));
 });
 
@@ -60,41 +42,30 @@ app.get("/login", function (req, res) {
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  if (username === "Saucebot") {
-    console.log(username + " " + password);
-    req.session.user = username;
-    req.session.opp = 1;
-    console.log("SESSION: ", req.session);
-    // res.redirect("/dashboard");
-    res.json({ status: "success", message: "Login Succeed", username });
-    // const users = await getUsers();
-    // console.log("USERS: ", users);
-    // res.json({ message: "Logged in Successfully" });
-    // res.end();
-  } else {
-    res.json({ status: "error", message: "Login Failed" });
-  }
+  console.log(username + " " + password);
+  if (username && password) {
+    try {
+      // check if username exists
+      const user = await getUser(username);
+      if (user.length === 0) {
+        return res.json({ status: "error", message: "Login Failed" });
+      }
 
-  // create db and tables
-  // const db = await createDb();
-  // console.log("DB: ", db);
-});
+      // check if password is valid
+      const isValid = await verifyUser(username, password, user);
+      if (!isValid) {
+        return res.json({ status: "error", message: "Login Failed" });
+      }
 
-app.get("/logout", function (req, res) {
-  if (req.session.user) {
-    req.session.destroy(function () {
-      res.redirect("/");
-    });
+      return res.json({ status: "success", message: "Login Success" });
+    } catch (error) {
+      return res.json({ status: "error", message: "Login Failed" });
+    }
   }
 });
 
 app.get("/dashboard", function (req, res) {
   res.sendFile(path.join(staticFolder, "dashboard.html"));
-  // if (req.session.user) {
-  //   // res.json({ message: "You are logged in" });
-  // } else {
-  //   res.send("You are not authenticated, please logged in.");
-  // }
 });
 
 app.get("*", function (req, res) {
