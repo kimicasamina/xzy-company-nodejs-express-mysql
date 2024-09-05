@@ -301,7 +301,7 @@ a:hover {
 /* ---------- HERO COMPONENT ------------ */
 .hero {
   width: 100%;
-  min-height: 310px;
+  min-height: 350px;
 
   background-image: url("../assets/images/mypage/header.jpg");
   background-repeat: no-repeat;
@@ -313,7 +313,7 @@ a:hover {
 
 .hero .hero-container {
   width: 100%;
-  min-height: 200px;
+  min-height: 350px;
   display: grid;
   place-items: center;
 }
