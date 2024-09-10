@@ -1,4 +1,10 @@
-# Dummy Website and Login System
+# XZY Company Website and Login System
+Features an intuitive layout with key highlights about the company, latest news, and featured services.
+
+## Environment 
+- MySql
+- Nodejs
+- Express
 
 ## Dependencies
 
